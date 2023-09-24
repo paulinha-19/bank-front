@@ -9,7 +9,6 @@ import {
 import { LinkItems } from "./items";
 import { NavItem } from "./NavItem";
 
-
 interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
