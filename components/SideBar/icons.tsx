@@ -1,5 +1,3 @@
-"use client";
-
 import { FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
 import { AiOutlineDashboard } from "react-icons/ai";
