@@ -1,12 +1,5 @@
 import React, { ElementType, CSSProperties } from "react";
-import {
-  Text,
-  Card,
-  CardBody,
-  Heading,
-  Flex,
-  BorderProps,
-} from "@chakra-ui/react";
+import { Text, Card, CardBody, Heading, Flex } from "@chakra-ui/react";
 
 interface CardContentProps {
   title: string;
@@ -29,7 +22,7 @@ export const CardContent = ({
           alignItems="center"
         >
           <Flex direction="column">
-            <Heading size="md">{title}</Heading>
+            <Heading size="sm">{title}</Heading>
             <Text>{content}</Text>
           </Flex>
           <Icon fontSize="24px" mr="2" />

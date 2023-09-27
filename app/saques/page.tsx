@@ -8,30 +8,69 @@ import {
   Td,
   Flex,
   IconButton,
-  Heading,
-  Button,
   Select,
-  Skeleton,
+  Heading,
+  Button
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
+  CustomGrid,
   CustomBadge,
   CustomShadow,
   Table,
-  CustomIconButton,
+  ButtonActions,
 } from "@/components/";
 import { Icons } from "@/utils/icons";
 import { FormatValue } from "@/utils/format-total";
-import { optionsPix } from "@/utils/options";
-import { exampleData } from "@/utils/example-data";
-import { headers } from "@/utils/headers";
-import { TableData } from "@/interface/TableData";
+import { optionsSaque } from "@/utils/options";
+import { Card } from "@/components/";
 
-export default function Chave() {
+interface TableData {
+  nome: string;
+  chavePix: string;
+  data: string;
+  status: string;
+  total: number;
+}
+
+const exampleData: TableData[] = [
+  {
+    nome: "João",
+    chavePix: "123456",
+    data: "05/10/2023",
+    status: "disponível",
+    total: 100.0,
+  },
+  {
+    nome: "Maria",
+    chavePix: "789012",
+    data: "10/10/2023",
+    status: "pendente",
+    total: 50.0,
+  },
+  {
+    nome: "Pedro",
+    chavePix: "345678",
+    data: "15/10/2023",
+    status: "processando",
+    total: 75.0,
+  },
+];
+
+const headers = [
+  "Nome",
+  "Chave pix",
+  "Data",
+  "Status",
+  "Total (R$)",
+  "Actions",
+];
+
+export default function Saques() {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<TableData[]>([]);
-  const [showNoResults, setShowNoResults] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
+  const [searchResults, setSearchResults] = useState<TableData[]>([]); //exampleData no []
+  const [showNoResults, setShowNoResults] = useState(false);
 
   useEffect(() => {
     const filteredData = exampleData.filter((item) => {
@@ -41,7 +80,7 @@ export default function Chave() {
       const searchMatch =
         searchTerm === "" ||
         item.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.cpf.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.chavePix.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.data.toLowerCase().includes(searchTerm.toLowerCase());
       return statusMatch && searchMatch;
     });
@@ -60,6 +99,7 @@ export default function Chave() {
       console.error("Erro na pesquisa:", error);
     }
   };
+
   const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedStatus((prevState) => {
       const newStatus = event.target.value;
@@ -69,29 +109,51 @@ export default function Chave() {
       return newStatus;
     });
   };
+
   return (
     <Box>
       <Box mb="8">
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-          flexWrap="wrap"
-        >
+        <Flex justifyContent="space-between">
           <Heading as="h4" size="lg">
-            Chaves pix
+            Saques
           </Heading>
           <Button
-            leftIcon={<Icons.MdPix />}
-            colorScheme="blue"
+            leftIcon={<Icons.BiMoneyWithdraw />}
+            colorScheme="red"
             variant="solid"
-            aria-label="Adicionar chave Pix"
+            aria-label="Fazer saque da conta"
             size="sm"
           >
-            Nova chave
+            Fazer saque
           </Button>
         </Flex>
       </Box>
-
+      <CustomGrid>
+        <Card.Root>
+          <Card.Content
+            title="Total"
+            content={1200.45}
+            icon={Icons.TbCurrencyReal}
+            borderLeft=" 0.25rem solid #4e73df !important"
+          />
+        </Card.Root>
+        <Card.Root>
+          <Card.Content
+            title="Jogador - Tx"
+            content={980.18}
+            icon={Icons.TbCurrencyReal}
+            borderLeft="0.25rem solid #1cc88a !important"
+          />
+        </Card.Root>
+        <Card.Root>
+          <Card.Content
+            title="Quantidade"
+            content={2}
+            icon={Icons.FaInfo}
+            borderLeft="0.25rem solid #36b9cc !important"
+          />
+        </Card.Root>
+      </CustomGrid>
       <CustomShadow>
         <Box p={5}>
           <Flex pb={5}>
@@ -104,8 +166,8 @@ export default function Chave() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <IconButton
-              variant="solid"
-              colorScheme="gray"
+              variant="outline"
+              colorScheme="blue"
               aria-label="Search database"
               icon={<SearchIcon />}
               onClick={handleSearch}
@@ -116,7 +178,7 @@ export default function Chave() {
               value={selectedStatus}
               onChange={handleStatusChange}
             >
-              {optionsPix.map((option) => (
+              {optionsSaque.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -135,19 +197,14 @@ export default function Chave() {
                 {searchResults.map((item: any, index: any) => (
                   <Table.Tr key={index}>
                     <Td>{item.nome}</Td>
-                    <Td>{item.cpf}</Td>
+                    <Td>{item.chavePix}</Td>
                     <Td>{item.data}</Td>
                     <Td>
                       <CustomBadge status={item.status} />
                     </Td>
-                    <Td>{FormatValue(item.saldo)}</Td>
+                    <Td>{FormatValue(item.total)}</Td>
                     <Td>
-                      <CustomIconButton
-                        aria-label="Informação"
-                        icon={<Icons.AiOutlineInfoCircle />}
-                        colorScheme="teal"
-                        variant="ghost"
-                      />
+                      <ButtonActions />
                     </Td>
                   </Table.Tr>
                 ))}

@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import { Icons } from "./icons";
+import { Icons } from "../../utils/icons";
 
 interface LinkItemProps {
   name: string;
@@ -14,5 +14,5 @@ export const LinkItems: Array<LinkItemProps> = [
     href: "dashboard",
   },
   { name: "Chave pix", icon: Icons.MdPix, href: "chave" },
-  { name: "Saque", icon: Icons.BiMoneyWithdraw, href: "saque" },
+  { name: "Saques", icon: Icons.BiMoneyWithdraw, href: "saques" },
 ];

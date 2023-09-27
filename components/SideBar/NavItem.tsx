@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { IconType } from "react-icons";
 
 interface NavItemProps extends FlexProps {
-    icon: IconType;
-    children: React.ReactNode;
+    icon?: IconType;
+    children?: React.ReactNode;
     href: string;
   }
 
