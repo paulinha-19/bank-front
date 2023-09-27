@@ -5,7 +5,8 @@ import { Box } from "@chakra-ui/react";
 
 interface CardRootProps {
   children: ReactNode;
+  pt?: string | number
 }
-export const CardRoot = ({ children }: CardRootProps) => {
-  return <Box>{children}</Box>;
+export const CardRoot = ({ children, pt }: CardRootProps) => {
+  return <Box pt={pt}>{children}</Box>;
 };

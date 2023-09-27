@@ -14,7 +14,8 @@ import {
   MenuList,
   VStack,
 } from "@chakra-ui/react";
-import { Icons } from "./icons";
+import { Icons } from "../../utils/icons";
+import Link from "next/link";
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
@@ -93,7 +94,9 @@ export const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             >
               <MenuItem>Alterar senha</MenuItem>
               <MenuItem>Depositar</MenuItem>
-              <MenuItem>Atividades</MenuItem>
+              <Link href="atividades">
+                <MenuItem>Logs</MenuItem>
+              </Link>
               <MenuDivider />
               <MenuItem>Sair</MenuItem>
             </MenuList>
