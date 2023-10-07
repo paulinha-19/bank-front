@@ -18,3 +18,4 @@ export const headersSaques = [
   "Actions",
 ];
 export const headersAtividades = ["Usuário", "IP", "Ação", "Data"];
+export const headersAprovarConta = ["Cpf", "Cnpj", "Email", "Status", "Ações"];

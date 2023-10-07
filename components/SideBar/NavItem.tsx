@@ -21,8 +21,9 @@ export const NavItem = ({ icon, children, href, ...rest }: NavItemProps) => {
           borderRadius="lg"
           role="group"
           cursor="pointer"
+          fontWeight={"medium"}
           _hover={{
-            bg: "blue.700",
+            bg: "orange.700",
             color: "white",
           }}
           {...rest}

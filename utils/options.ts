@@ -14,3 +14,9 @@ export const optionsPix = [
   { value: "processando", label: "Processando" },
 ];
 
+export const optionsAprovarConta = [
+  { value: "todos", label: "Todos os Status" },
+  { value: "aprovado", label: "Aprovado" },
+  { value: "pendente", label: "Pendente" },
+  { value: "recusado", label: "Recusado" },
+];

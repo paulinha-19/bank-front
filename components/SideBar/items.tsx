@@ -11,8 +11,9 @@ export const LinkItems: Array<LinkItemProps> = [
   {
     name: "Dashboard",
     icon: Icons.AiOutlineDashboard,
-    href: "admin/dashboard",
+    href: "dashboard",
   },
-  { name: "Chave pix", icon: Icons.MdPix, href: "admin/chave" },
-  { name: "Saques", icon: Icons.BiMoneyWithdraw, href: "admin/saques" },
+  { name: "Chave pix", icon: Icons.MdPix, href: "chave" },
+  { name: "Saques", icon: Icons.BiMoneyWithdraw, href: "saques" },
+  { name: "Aprovar conta", icon: Icons.BiMoneyWithdraw, href: "aprovar-conta" },
 ];

@@ -6,9 +6,12 @@ export default function Loading() {
       <div className="box">
         <div className="title">
           <span className="block"></span>
-          <h1>
-            CashBank<span></span>
-          </h1>
+
+          <h4>Ca</h4>
+          <h4 style={{ color: "green", position: "relative" }}>$</h4>
+          <h4>
+            hBank<span></span>
+          </h4>
         </div>
         <div className="role">
           <div className="block"></div>
