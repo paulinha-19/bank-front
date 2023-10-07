@@ -1,16 +1,7 @@
 import React from "react";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Badge,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { CustomShadow, TableHeading } from "../";
-import { getStatusColor } from "@/utils/getStatusColor";
+import { Td, Skeleton } from "@chakra-ui/react";
+import { CustomShadow, TableHeading, Table, CustomBadge } from "../index";
+import { utils } from "@/utils";
 
 interface TableData {
   key: string;
@@ -29,38 +20,23 @@ export const UltimosSaques = () => {
   return (
     <CustomShadow>
       <TableHeading title=" Últimos saques" />
-      <Table variant="simple">
-        <Thead bg="gray.400">
-          <Tr bg={useColorModeValue("gray.200", "gray.700")}>
-            <Th>Chave</Th>
-            <Th>Data</Th>
-            <Th>Status</Th>
-            <Th>Total (R$)</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+      <Table.Root variant="simple">
+        <Table.Thead>
+          <Table.TheadContent headers={utils.headersDashboard} />
+        </Table.Thead>
+        <Table.Body>
           {data.map((item, index) => (
-            <Tr
-              key={index}
-              _hover={{
-                backgroundColor: useColorModeValue("gray.100", "gray.700"),
-              }}
-            >
+            <Table.Tr key={index}>
               <Td>{item.key}</Td>
               <Td>{item.date}</Td>
               <Td>
-                <Badge
-                  colorScheme={getStatusColor(item.status)}
-                  variant="outline"
-                >
-                  {item.status}
-                </Badge>
+                <CustomBadge status={item.status} />
               </Td>
-              <Td>{item.total.toFixed(2)}</Td>
-            </Tr>
+              <Td>{utils.FormatValue(item.total)}</Td>
+            </Table.Tr>
           ))}
-        </Tbody>
-      </Table>
+        </Table.Body>
+      </Table.Root>
     </CustomShadow>
   );
 };

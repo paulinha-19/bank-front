@@ -8,29 +8,24 @@ import {
 } from "@chakra-ui/react";
 import { LinkItems } from "./items";
 import { NavItem } from "./NavItem";
+import { theme } from "../../theme";
+import Image from "next/image";
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
 
-const customLightModeColors = {
-  light: {
-    bg: "#4e8fdf",
-    bgGradient: "linear-gradient(180deg, #4e8fdf 10%, #224abe 100%)",
-    bgSize: "cover",
-  },
-};
 export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue(customLightModeColors.light.bg, "gray.900")}
+      bg={useColorModeValue(theme.customLightModeColors.light.bg, "gray.900")}
       backgroundImage={useColorModeValue(
-        customLightModeColors.light.bgGradient,
+        theme.customLightModeColors.light.bgGradient,
         "none"
       )}
       backgroundSize={useColorModeValue(
-        customLightModeColors.light.bgSize,
+        theme.customLightModeColors.light.bgSize,
         "auto"
       )}
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
@@ -40,13 +35,23 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        <Box mx="auto" pt="5">
+          <Image
+            src="/logo-1.png"
+            width={100}
+            height={100}
+            alt="Logo cashbank"
+          />
+        </Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} href={link.href}>
+        <NavItem
+          key={link.name}
+          icon={link.icon}
+          href={link.href}
+          onClick={onClose}
+        >
           {link.name}
         </NavItem>
       ))}

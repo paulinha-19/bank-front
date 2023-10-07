@@ -3,7 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 function Copyright() {
   return (
     <Text as="span" color="gray.600" fontSize="md">
-      © Copyright {new Date().getFullYear()} PIXPAY
+      © Copyright {new Date().getFullYear()} CashBank
     </Text>
   );
 }
@@ -16,7 +16,7 @@ export const Footer = () => {
       shadow="md"
       p={4}
       position="sticky"
-      bottom="0"
+      // bottom="0"
       width="100%"
     >
       <Box textAlign="center">
