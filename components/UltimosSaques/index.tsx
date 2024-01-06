@@ -1,5 +1,5 @@
 import React from "react";
-import { Td, Skeleton } from "@chakra-ui/react";
+import { Td } from "@chakra-ui/react";
 import { CustomShadow, TableHeading, Table, CustomBadge } from "../index";
 import { utils } from "@/utils";
 
