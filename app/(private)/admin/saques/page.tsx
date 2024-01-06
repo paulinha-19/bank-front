@@ -193,7 +193,7 @@ export default function Saques() {
                     </Td>
                     <Td>{utils.FormatValue(item.total)}</Td>
                     <Td>
-                      <ButtonActions />
+                      <ButtonActions infoActions={utils.buttonActions.buttonActionsAR} />
                     </Td>
                   </Table.Tr>
                 ))}

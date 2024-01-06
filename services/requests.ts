@@ -51,7 +51,7 @@ export const createUserWithCpf = async (
       throw new Error(`${errorMessage}`);
     }
     console.error(errors);
-    throw new Error("Falha ao cadastrar usuário co CPF");
+    throw new Error("Falha ao cadastrar usuário com CPF");
   }
 };
 
