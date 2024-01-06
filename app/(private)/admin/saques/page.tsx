@@ -10,7 +10,7 @@ import {
   IconButton,
   Select,
   Heading,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
@@ -20,9 +20,7 @@ import {
   Table,
   ButtonActions,
 } from "@/components/";
-import { Icons } from "@/utils/icons";
-import { FormatValue } from "@/utils/format-total";
-import { optionsSaque } from "@/utils/options";
+import { utils } from "@/utils/index";
 import { Card } from "@/components/";
 
 interface TableData {
@@ -55,15 +53,6 @@ const exampleData: TableData[] = [
     status: "processando",
     total: 75.0,
   },
-];
-
-const headers = [
-  "Nome",
-  "Chave pix",
-  "Data",
-  "Status",
-  "Total (R$)",
-  "Actions",
 ];
 
 export default function Saques() {
@@ -118,7 +107,7 @@ export default function Saques() {
             Saques
           </Heading>
           <Button
-            leftIcon={<Icons.BiMoneyWithdraw />}
+            leftIcon={<utils.Icons.BiMoneyWithdraw />}
             colorScheme="red"
             variant="solid"
             aria-label="Fazer saque da conta"
@@ -133,7 +122,7 @@ export default function Saques() {
           <Card.Content
             title="Total"
             content={1200.45}
-            icon={Icons.TbCurrencyReal}
+            icon={utils.Icons.TbCurrencyReal}
             borderLeft=" 0.25rem solid #4e73df !important"
           />
         </Card.Root>
@@ -141,7 +130,7 @@ export default function Saques() {
           <Card.Content
             title="Jogador - Tx"
             content={980.18}
-            icon={Icons.TbCurrencyReal}
+            icon={utils.Icons.TbCurrencyReal}
             borderLeft="0.25rem solid #1cc88a !important"
           />
         </Card.Root>
@@ -149,7 +138,7 @@ export default function Saques() {
           <Card.Content
             title="Quantidade"
             content={2}
-            icon={Icons.FaInfo}
+            icon={utils.Icons.FaInfo}
             borderLeft="0.25rem solid #36b9cc !important"
           />
         </Card.Root>
@@ -178,7 +167,7 @@ export default function Saques() {
               value={selectedStatus}
               onChange={handleStatusChange}
             >
-              {optionsSaque.map((option) => (
+              {utils.optionsSaque.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -191,7 +180,7 @@ export default function Saques() {
           {(!showNoResults || searchResults.length > 0) && (
             <Table.Root>
               <Table.Thead>
-                <Table.TheadContent headers={headers} />
+                <Table.TheadContent headers={utils.headersSaques} />
               </Table.Thead>
               <Table.Body>
                 {searchResults.map((item: any, index: any) => (
@@ -202,9 +191,9 @@ export default function Saques() {
                     <Td>
                       <CustomBadge status={item.status} />
                     </Td>
-                    <Td>{FormatValue(item.total)}</Td>
+                    <Td>{utils.FormatValue(item.total)}</Td>
                     <Td>
-                      <ButtonActions />
+                      <ButtonActions infoActions={utils.buttonActions.buttonActionsAR} />
                     </Td>
                   </Table.Tr>
                 ))}

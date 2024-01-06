@@ -16,6 +16,10 @@ export const getStatusColor = (status: string) => {
       return "gray";
     case "processando":
       return "orange";
+    case "aprovado":
+      return "green";
+    case "recusado":
+      return "red";
     default:
       return "gray";
   }

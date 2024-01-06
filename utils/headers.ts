@@ -1,4 +1,4 @@
-export const headers = [
+export const headersPix = [
   "Nome",
   "CPF",
   "Data",
@@ -6,6 +6,16 @@ export const headers = [
   "Saldo (R$)",
   "Actions",
 ];
+
+export const headersDashboard = ["Chave", "Data", "Status", "Total (R$)"];
+
+export const headersSaques = [
+  "Nome",
+  "Chave pix",
+  "Data",
+  "Status",
+  "Total (R$)",
+  "Actions",
+];
 export const headersAtividades = ["Usuário", "IP", "Ação", "Data"];
-
-
+export const headersAprovarConta = ["Cpf", "Cnpj", "Email", "Status", "Ações"];

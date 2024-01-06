@@ -5,14 +5,15 @@ import axios from "axios";
 import {
   Box,
   Input,
+  InputGroup,
   Td,
   Flex,
-  IconButton,
   Heading,
   Button,
   Select,
-  Skeleton,
+  InputRightElement,
 } from "@chakra-ui/react";
+import ReactPaginate from "react-paginate";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   CustomBadge,
@@ -20,21 +21,25 @@ import {
   Table,
   CustomIconButton,
 } from "@/components/";
-import { Icons } from "@/utils/icons";
-import { FormatValue } from "@/utils/format-total";
-import { optionsPix } from "@/utils/options";
-import { exampleData } from "@/utils/example-data";
-import { headers } from "@/utils/headers";
-import { TableData } from "@/interface/TableData";
+import { utils } from "../../../../utils/index";
+import { TablePixData } from "@/interface/TablePixData";
+import { usePagination } from "@/hook/usePagination";
+import { examplePixData as data } from "@/data/table-pix";
+import styles from "../../../../styles/Pagination.module.css";
 
 export default function Chave() {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<TableData[]>([]);
+  const [searchResults, setSearchResults] = useState<TablePixData[]>([]);
   const [showNoResults, setShowNoResults] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
 
+  const { pageCount, currentPageData, currentPage, handlePageChange } =
+    usePagination<TablePixData>({
+      data: searchResults,
+      itemsPerPage: 8,
+    });
   useEffect(() => {
-    const filteredData = exampleData.filter((item) => {
+    const filteredData = data.filter((item) => {
       const statusMatch =
         selectedStatus === "todos" ||
         item.status.toLowerCase() === selectedStatus.toLowerCase();
@@ -53,7 +58,7 @@ export default function Chave() {
     try {
       // Fazer a requisição ao backend com o searchTerm e receber os resultados
       const response = await axios.get(`/api/search?query=${searchTerm}`);
-      const data: TableData[] = response.data;
+      const data: TablePixData[] = response.data;
       setSearchResults(data);
       setShowNoResults(data.length === 0);
     } catch (error) {
@@ -81,7 +86,7 @@ export default function Chave() {
             Chaves pix
           </Heading>
           <Button
-            leftIcon={<Icons.MdPix />}
+            leftIcon={<utils.Icons.MdPix />}
             colorScheme="blue"
             variant="solid"
             aria-label="Adicionar chave Pix"
@@ -94,45 +99,45 @@ export default function Chave() {
 
       <CustomShadow>
         <Box p={5}>
-          <Flex pb={5}>
-            <Input
-              mr={2}
-              maxW="300px"
-              type="text"
-              placeholder="Digite o nome ou chave Pix"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <IconButton
-              variant="solid"
-              colorScheme="gray"
-              aria-label="Search database"
-              icon={<SearchIcon />}
-              onClick={handleSearch}
-            />
+          <Box
+            pb={5}
+            display="flex"
+            justifyContent="space-between"
+            flexWrap="wrap"
+          >
+            <InputGroup maxW="300px">
+              <InputRightElement pointerEvents="none">
+                <SearchIcon color="gray.300" />
+              </InputRightElement>
+              <Input
+                type="text"
+                placeholder="Pesquise pelo o nome ou cpf"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </InputGroup>
             <Select
-              ml={2}
               maxW="200px"
               value={selectedStatus}
               onChange={handleStatusChange}
             >
-              {optionsPix.map((option) => (
+              {utils.optionsPix.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
             </Select>
-          </Flex>
+          </Box>
 
           {showNoResults && <p>Não foi encontrado nenhum item.</p>}
 
           {(!showNoResults || searchResults.length > 0) && (
             <Table.Root>
               <Table.Thead>
-                <Table.TheadContent headers={headers} />
+                <Table.TheadContent headers={utils.headersPix} />
               </Table.Thead>
               <Table.Body>
-                {searchResults.map((item: any, index: any) => (
+                {currentPageData.map((item: any, index: any) => (
                   <Table.Tr key={index}>
                     <Td>{item.nome}</Td>
                     <Td>{item.cpf}</Td>
@@ -140,11 +145,11 @@ export default function Chave() {
                     <Td>
                       <CustomBadge status={item.status} />
                     </Td>
-                    <Td>{FormatValue(item.saldo)}</Td>
+                    <Td>{utils.FormatValue(item.saldo)}</Td>
                     <Td>
                       <CustomIconButton
                         aria-label="Informação"
-                        icon={<Icons.AiOutlineInfoCircle />}
+                        icon={<utils.Icons.AiOutlineInfoCircle />}
                         colorScheme="teal"
                         variant="ghost"
                       />
@@ -155,6 +160,21 @@ export default function Chave() {
             </Table.Root>
           )}
         </Box>
+        {!showNoResults && searchResults.length > 0 && (
+          <Box className={styles.pagination}>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              previousLabel="<"
+              pageCount={pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={handlePageChange}
+              containerClassName={styles.pagination}
+              activeClassName={styles.active}
+            />
+          </Box>
+        )}
       </CustomShadow>
     </Box>
   );

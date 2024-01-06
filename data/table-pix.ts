@@ -1,9 +1,16 @@
-import { TableData } from "@/interface/TableData";
+import { TablePixData } from "@/interface/TablePixData";
 
-export const exampleData: TableData[] = [
+export const examplePixData: TablePixData[] = [
   {
     data: "05/10/2023",
     nome: "Talita",
+    cpf: "000.696.959-65",
+    saldo: 830.0,
+    status: "cancelada",
+  },
+  {
+    data: "05/10/2023",
+    nome: "Marcos",
     cpf: "000.696.959-65",
     saldo: 830.0,
     status: "cancelada",
@@ -17,77 +24,42 @@ export const exampleData: TableData[] = [
   },
   {
     data: "10/10/2023",
-    nome: "Mateus",
+    nome: "João",
     cpf: "653.942.893-66",
     saldo: 50.0,
     status: "pendente",
   },
   {
     data: "10/10/2023",
-    nome: "Mateus",
+    nome: "Maria",
     cpf: "653.942.893-66",
     saldo: 50.0,
     status: "pendente",
   },
   {
     data: "10/10/2023",
-    nome: "Mateus",
+    nome: "José",
     cpf: "653.942.893-66",
     saldo: 50.0,
     status: "pendente",
   },
   {
     data: "10/10/2023",
-    nome: "Mateus",
+    nome: "Pedro",
     cpf: "653.942.893-66",
     saldo: 50.0,
     status: "pendente",
   },
   {
     data: "10/10/2023",
-    nome: "Mateus",
+    nome: "Fabio",
     cpf: "653.942.893-66",
     saldo: 50.0,
     status: "pendente",
   },
   {
     data: "10/10/2023",
-    nome: "Mateus",
-    cpf: "653.942.893-66",
-    saldo: 50.0,
-    status: "pendente",
-  },
-  {
-    data: "10/10/2023",
-    nome: "Mateus",
-    cpf: "653.942.893-66",
-    saldo: 50.0,
-    status: "pendente",
-  },
-  {
-    data: "10/10/2023",
-    nome: "Mateus",
-    cpf: "653.942.893-66",
-    saldo: 50.0,
-    status: "pendente",
-  },
-  {
-    data: "10/10/2023",
-    nome: "Mateus",
-    cpf: "653.942.893-66",
-    saldo: 50.0,
-    status: "pendente",
-  },
-  {
-    data: "10/10/2023",
-    nome: "Mateus",
-    cpf: "653.942.893-66",
-    saldo: 50.0,
-    status: "pendente",
-  },
-  {
-    data: "10/10/2023",
-    nome: "Mateus",
+    nome: "Mirela",
     cpf: "653.942.893-66",
     saldo: 50.0,
     status: "pendente",

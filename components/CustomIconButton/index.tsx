@@ -6,11 +6,5 @@ export const CustomIconButton = ({
   onClick,
   ...rest
 }: IconButtonProps) => {
-  return (
-    <IconButton
-      icon={icon}
-      onClick={onClick}
-      {...rest}
-    />
-  );
+  return <IconButton icon={icon} onClick={onClick} {...rest} />;
 };

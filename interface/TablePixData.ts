@@ -1,4 +1,4 @@
-export interface TableData {
+export interface TablePixData {
     nome: string;
     cpf: string;
     data: string;
