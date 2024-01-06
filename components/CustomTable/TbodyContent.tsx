@@ -1,4 +1,4 @@
-import { Td, Tr } from "@chakra-ui/react";
+import { Td } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
 
 interface TableTdProps {
@@ -11,7 +11,7 @@ export const TbodyContent = ({ content, nome }: TableTdProps) => {
     <>
       {Array.isArray(content) ? (
         content.map((item, index: number) => (
-          <Td>{nome ? (item as any)[nome] : item}</Td>
+          <Td key={index}>{nome ? (item as any)[nome] : item}</Td>
         ))
       ) : (
         <Td>{nome ? (content as any)[nome] : content}</Td>
