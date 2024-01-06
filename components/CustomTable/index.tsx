@@ -5,6 +5,7 @@ import { TableBody } from "./TableBody";
 import { TbodyContent } from "./TbodyContent";
 import { TableTr } from "./TableTr";
 import { TableTd } from "./TableTd";
+import { TableHeading } from "..";
 
 export const Table = {
   Root: TableRoot,
@@ -14,4 +15,5 @@ export const Table = {
   BodyContent: TbodyContent,
   Tr: TableTr,
   Td: TableTd,
+  TableHeading: TableHeading,
 };

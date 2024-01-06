@@ -4,6 +4,9 @@ import {
   AiOutlineDashboard,
   AiFillDelete,
   AiOutlineInfoCircle,
+  AiFillDislike,
+  AiFillLike
+  
 } from "react-icons/ai";
 import { MdPix } from "react-icons/md";
 import { BiMoneyWithdraw, BiSolidEditAlt } from "react-icons/bi";
@@ -23,5 +26,7 @@ export const Icons = {
   BsEyeFill,
   BiSolidEditAlt,
   AiFillDelete,
-  AiOutlineInfoCircle
+  AiOutlineInfoCircle,
+  AiFillLike,
+  AiFillDislike
 };

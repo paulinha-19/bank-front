@@ -15,4 +15,5 @@ export const LinkItems: Array<LinkItemProps> = [
   },
   { name: "Chave pix", icon: Icons.MdPix, href: "chave" },
   { name: "Saques", icon: Icons.BiMoneyWithdraw, href: "saques" },
+  { name: "Aprovar conta", icon: Icons.BiMoneyWithdraw, href: "aprovar-conta" },
 ];

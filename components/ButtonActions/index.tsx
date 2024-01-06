@@ -1,11 +1,26 @@
 import React from "react";
-import { buttonsActions } from "../../utils/button-actions";
 import { CustomIconButton } from "..";
+import { IconType } from "react-icons";
 
-export const ButtonActions = () => {
+interface InfoButtonAction {
+  colorScheme: string;
+  fontSize: string;
+  ariaLabel: string;
+  icon: IconType;
+}
+
+interface ButtonActionsProps {
+  infoActions: InfoButtonAction[];
+  isDisabled?: boolean | undefined;
+}
+
+export const ButtonActions = ({
+  infoActions,
+  isDisabled,
+}: ButtonActionsProps) => {
   return (
     <div>
-      {buttonsActions.map((Icon, btnIndex) => (
+      {infoActions.map((Icon, btnIndex) => (
         <CustomIconButton
           key={btnIndex}
           colorScheme={Icon.colorScheme}
@@ -13,6 +28,7 @@ export const ButtonActions = () => {
           fontSize={Icon.fontSize}
           aria-label={Icon.ariaLabel}
           icon={<Icon.icon />}
+          isDisabled={isDisabled}
         />
       ))}
     </div>

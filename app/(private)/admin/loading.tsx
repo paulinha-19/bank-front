@@ -1,4 +1,4 @@
-import { Spinner, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface LoadingProps {
@@ -11,7 +11,7 @@ export default function Loading({ children }: LoadingProps) {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      minH="200px"
+      height="100vh"
     >
       <span className="loader"></span>
     </Box>

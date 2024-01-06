@@ -1,3 +1,5 @@
+"use client";
+
 export * from "./Footer";
 export * from "./SideBar";
 export * from "./NavBar";
@@ -12,3 +14,9 @@ export * from "./CustomTable";
 export * from "./ButtonActions";
 export * from "./Card";
 export * from "./CustomSkeleton";
+export * from "./CustomShadow";
+export * from "./Form";
+export * from "./CustomCheckbox";
+export * from "./Login";
+export * from "./SignUp";
+export * from "./ResetPassword";

@@ -6,6 +6,6 @@ export const handlingErrorCode = (response: Response) => {
   } else if (status === 500) {
     throw new Error("Server error");
   } else if (!ok) {
-    throw new Error(`HTTP error! status: ${status}`);
+    throw new Error(`status ${status}`);
   }
 };
