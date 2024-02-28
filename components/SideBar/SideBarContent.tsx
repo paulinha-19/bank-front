@@ -4,7 +4,7 @@ import {
   CloseButton,
   Flex,
   useColorModeValue,
-  Text,
+  Image,
 } from "@chakra-ui/react";
 import { LinkItems } from "./items";
 import { NavItem } from "./NavItem";
@@ -34,12 +34,13 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex alignItems="center" justifyContent="space-between">
-        <Box mx="auto" fontSize="3xl" mt="5">
-          <Text as="span">Ca</Text>
-          <Text style={{ color: "green" }} as="span">
-            $
-          </Text>
-          <Text as="span">hBank</Text>
+        <Box mx="auto" mt="5">
+          <Image
+            boxSize="full"
+            objectFit="cover"
+            src="/images/logo.png"
+            alt="Logo"
+          />
         </Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
