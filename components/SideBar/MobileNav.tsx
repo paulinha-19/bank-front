@@ -13,9 +13,10 @@ import {
   MenuItem,
   MenuList,
   VStack,
+  Link,
 } from "@chakra-ui/react";
 import { Icons } from "../../utils/icons";
-import Link from "next/link";
+import { redirect } from 'next/navigation'
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
@@ -92,13 +93,15 @@ export const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
-              <MenuItem>Alterar senha</MenuItem>
+              {/* <MenuItem>Alterar senha</MenuItem>
               <MenuItem>Depositar</MenuItem>
               <Link href="atividades">
                 <MenuItem>Logs</MenuItem>
               </Link>
-              <MenuDivider />
-              <MenuItem>Sair</MenuItem>
+              <MenuDivider /> */}
+              <Link href="/account-form" style={{textDecoration: "none", color:"black"}}>
+                <MenuItem>Sair</MenuItem>
+              </Link>
             </MenuList>
           </Menu>
         </Flex>

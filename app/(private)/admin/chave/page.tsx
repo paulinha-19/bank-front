@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import {
   Box,
@@ -12,6 +12,16 @@ import {
   Button,
   Select,
   InputRightElement,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalHeader,
+  ModalCloseButton,
+  ModalContent,
+  FormLabel,
+  FormControl,
+  ModalBody,
+  ModalFooter
 } from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -32,6 +42,7 @@ export default function Chave() {
   const [searchResults, setSearchResults] = useState<TablePixData[]>([]);
   const [showNoResults, setShowNoResults] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { pageCount, currentPageData, currentPage, handlePageChange } =
     usePagination<TablePixData>({
@@ -91,10 +102,30 @@ export default function Chave() {
             variant="solid"
             aria-label="Adicionar chave Pix"
             size="sm"
+            onClick={onOpen}
           >
             Nova chave
           </Button>
         </Flex>
+        <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Criar chave de identificação</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Chave pix</FormLabel>
+              <Input type="text" placeholder="Insira sua chave aqui" />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' onClick={onClose}>
+              Salvar
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       </Box>
 
       <CustomShadow>

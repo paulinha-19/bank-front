@@ -86,7 +86,7 @@ export const Login = ({ changeView }: LoginProps) => {
         </Box>
         <Form.Actions>
           <Form.Action
-            colorScheme="orange"
+            colorScheme="yellow"
             isSubmitting={isSubmitting}
             text="Entrar"
             mt="6"

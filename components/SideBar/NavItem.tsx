@@ -23,7 +23,7 @@ export const NavItem = ({ icon, children, href, ...rest }: NavItemProps) => {
           cursor="pointer"
           fontWeight={"medium"}
           _hover={{
-            bg: "orange.700",
+            bg: "#C1A170",
             color: "white",
           }}
           {...rest}

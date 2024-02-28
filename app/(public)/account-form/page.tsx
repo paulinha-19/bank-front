@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import React from "react";
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text, Image } from "@chakra-ui/react";
 import "../../../styles/account-form.css";
 import { Login, SignUp, ResetPassword } from "../../../components/index";
 import Loading from "../loading";
@@ -56,14 +56,11 @@ export default function AccountForm() {
               className="bg-cashbank"
               flex={1}
               justifyContent={"center"}
+              alignItems={"center"}
               display={{ base: "none", md: "flex" }}
             >
-              <Box className="cashbank-name">
-                <Text>Ca</Text>
-                <Text className="letter-s-cashbank" as="span">
-                  $
-                </Text>
-                <Text>hBank</Text>
+              <Box>
+                <Image objectFit="cover" src="/images/logo.png" alt="Logo" />
               </Box>
             </Flex>
             <Flex p={8} flex={1} align={"center"} justify={"center"}>

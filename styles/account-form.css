@@ -31,7 +31,7 @@
 }
 
 .bg-cashbank {
-    background: linear-gradient(-45deg, #e4592f, #e66a45, #d8917c, #fdae94);
+    background: linear-gradient(-45deg, #000000, #131313, #1e1e1e, #1e1e1e);
     background-size: 400% 400%;
     animation: Gradient 5s ease infinite;
     box-sizing: border-box;
@@ -44,7 +44,7 @@
     align-items: center;
     position: absolute;
     top: 50%;
-    background-image: linear-gradient(orange, orange);
+    background-image: linear-gradient(rgb(7, 7, 7), rgb(7, 7, 7));
     background-size: 100% 10px;
     background-repeat: no-repeat;
     background-position: 100% 0%;

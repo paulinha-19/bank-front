@@ -11,6 +11,16 @@ import {
   Select,
   Heading,
   Button,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalHeader,
+  ModalCloseButton,
+  ModalContent,
+  FormLabel,
+  FormControl,
+  ModalBody,
+  ModalFooter
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
@@ -60,6 +70,8 @@ export default function Saques() {
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
   const [searchResults, setSearchResults] = useState<TableData[]>([]); //exampleData no []
   const [showNoResults, setShowNoResults] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
 
   useEffect(() => {
     const filteredData = exampleData.filter((item) => {
@@ -112,10 +124,29 @@ export default function Saques() {
             variant="solid"
             aria-label="Fazer saque da conta"
             size="sm"
+            onClick={onOpen}
           >
             Fazer saque
           </Button>
         </Flex>
+        <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Saque</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <Input type="text" placeholder="Insira o valor do saque" />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='red' onClick={onClose}>
+              Sacar
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       </Box>
       <CustomGrid>
         <Card.Root>
