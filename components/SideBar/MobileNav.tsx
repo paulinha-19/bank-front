@@ -14,6 +14,7 @@ import {
   MenuList,
   VStack,
   Link,
+  Image
 } from "@chakra-ui/react";
 import { Icons } from "../../utils/icons";
 import { redirect } from 'next/navigation'
@@ -42,15 +43,16 @@ export const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         aria-label="open menu"
         icon={<Icons.FiMenu />}
       />
-
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+        <Box mx="auto">
+          <Image
+            boxSize="full"
+            objectFit="cover"
+            src="/images/logo.png"
+            alt="Logo"
+            display={{ base: "flex", md: "none"}}
+            width={"100px"}
+          />
+        </Box>
       <HStack spacing={{ base: "0", md: "6" }}>
         <IconButton
           size="lg"
@@ -58,12 +60,12 @@ export const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
           aria-label="open menu"
           icon={<Icons.TbCurrencyReal />}
         />
-        <IconButton
+        {/* <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
           icon={<Icons.FiBell />}
-        />
+        /> */}
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton

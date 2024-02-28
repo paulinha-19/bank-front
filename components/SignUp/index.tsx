@@ -8,6 +8,7 @@ import {
   Stack,
   Radio,
   FormLabel,
+  Text
 } from "@chakra-ui/react";
 import { Form } from "..";
 import { SignupForm, SignupSchema } from "@/schema/signup";
@@ -86,11 +87,11 @@ export const SignUp = ({ changeView }: SignUpProps) => {
         onSubmitForm={handleSignUp}
         handleSubmit={handleSubmit}
       >
-        <Heading as="h2" fontWeight="100" size="lg" mb={5} textAlign="center">
+        <Heading color="white" as="h2" fontWeight="100" size="lg" mb={5} textAlign="center">
           Cadastre-se
         </Heading>
         <fieldset>
-          <legend>Solicitar conta</legend>
+          <legend style={{color: "black"}}>Solicitar conta</legend>
           <Form.Input
             id="email"
             label="Email"
@@ -180,7 +181,7 @@ export const SignUp = ({ changeView }: SignUpProps) => {
         </fieldset>
         <Form.Actions>
           <Form.Action
-            colorScheme="orange"
+            colorScheme="yellow"
             isSubmitting={isSubmitting}
             text="Cadastrar"
             mt="6"
@@ -188,11 +189,11 @@ export const SignUp = ({ changeView }: SignUpProps) => {
         </Form.Actions>
         <Button
           colorScheme="gray"
-          variant="link"
+          variant="unstyled"
           mt={4}
           onClick={() => changeView("logIn")}
         >
-          Já tem conta?
+          <Text color={"white"}>Já tem conta?</Text>
         </Button>
       </Form.Root>
     </Box>

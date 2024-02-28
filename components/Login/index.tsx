@@ -1,5 +1,14 @@
 import React from "react";
-import { Box, Heading, Button, Text, Link, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Button,
+  Text,
+  Link,
+  useToast,
+  Flex,
+  Image,
+} from "@chakra-ui/react";
 import { Form } from "..";
 import { LoginSchema, LoginForm } from "@/schema/login";
 import { useForms } from "@/hook/useForms";
@@ -50,7 +59,26 @@ export const Login = ({ changeView }: LoginProps) => {
         onSubmitForm={handleSignIn}
         handleSubmit={handleSubmit}
       >
-        <Heading as="h2" fontWeight="100" size="lg" mb={5} textAlign="center">
+        <Flex alignItems="center" justifyContent="space-between">
+          <Box mx="auto" mt="5">
+            <Image
+              boxSize="full"
+              objectFit="cover"
+              src="/images/logo.png"
+              alt="Logo"
+              display={{ base: "flex", md: "none" }}
+              width={"150px"}
+            />
+          </Box>
+        </Flex>
+        <Heading
+          color={"white"}
+          as="h2"
+          fontWeight="100"
+          size="lg"
+          mb={5}
+          textAlign="center"
+        >
           Acesse sua conta
         </Heading>
         <fieldset>
@@ -74,15 +102,11 @@ export const Login = ({ changeView }: LoginProps) => {
           />
         </fieldset>
         <Box mt="2" display="flex" justifyContent="space-between">
-          <Text>
-            <Link onClick={() => changeView("PWReset")}>Esqueci a senha</Link>
-          </Text>
-          <Button
-            colorScheme="gray"
-            variant="link"
-            onClick={() => changeView("signUp")}
-          >
-            Solicitar conta
+          <Button variant="unstyled" onClick={() => changeView("PWReset")}>
+            <Text color={"white"}>Esqueci a senha</Text>
+          </Button>
+          <Button variant="unstyled" onClick={() => changeView("signUp")}>
+            <Text color={"white"}>Solicitar conta</Text>
           </Button>
         </Box>
         <Form.Actions>

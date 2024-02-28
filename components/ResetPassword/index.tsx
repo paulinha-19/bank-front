@@ -43,10 +43,17 @@ export const ResetPassword = ({ changeView }: ResetPasswordProps) => {
         onSubmitForm={handleResetPassword}
         handleSubmit={handleSubmit}
       >
-        <Heading as="h2" fontWeight="100" size="lg" mb={2} textAlign="center">
+        <Heading
+          color={"white"}
+          as="h2"
+          fontWeight="100"
+          size="lg"
+          mb={2}
+          textAlign="center"
+        >
           Resetar senha
         </Heading>
-        <Text as="span" mb={4} textAlign="center">
+        <Text color={"white"} as="span" mb={4} textAlign="center">
           O link de reset será enviado para o seu email
         </Text>
         <fieldset>
@@ -70,11 +77,11 @@ export const ResetPassword = ({ changeView }: ResetPasswordProps) => {
         </Form.Actions>
         <Button
           colorScheme="gray"
-          variant="link"
+          variant="unstyled"
           mt={4}
           onClick={() => changeView("logIn")}
         >
-          Login
+          <Text color={"white"}>Login</Text>
         </Button>
       </Form.Root>
     </Box>

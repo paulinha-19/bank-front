@@ -70,6 +70,7 @@ export default function Saques() {
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
   const [searchResults, setSearchResults] = useState<TableData[]>([]); //exampleData no []
   const [showNoResults, setShowNoResults] = useState(false);
+  const [selectedTypePix, setSelectedTypePix] = useState<string>("");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
 
@@ -111,6 +112,16 @@ export default function Saques() {
     });
   };
 
+  const handleTypePixChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTypePix((prevState) => {
+      const newTypePix = event.target.value;
+      if (prevState === newTypePix) {
+        return prevState;
+      }
+      return newTypePix;
+    });
+  };
+
   return (
     <Box>
       <Box mb="8">
@@ -136,7 +147,22 @@ export default function Saques() {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <Input type="text" placeholder="Insira o valor do saque" />
+            <FormLabel htmlFor="tipo-pix" pt={3}>Selecione o tipo da chave</FormLabel>
+                <Select
+                  value={selectedTypePix}
+                  onChange={handleTypePixChange}
+                  id="tipo-pix"
+                >
+                  {utils.typePix.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </Select>
+                <FormLabel htmlFor="chave-pix" pt={5}>Chave pix</FormLabel>
+                <Input placeholder="Insira sua chave" id="chave-pix" />
+                <FormLabel htmlFor="valor-saque" pt={5}>Valor do saque</FormLabel>
+                <Input type="text" placeholder="Insira o valor do saque" id="valor-saque" />
             </FormControl>
           </ModalBody>
 
