@@ -40,9 +40,12 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             objectFit="cover"
             src="/images/logo.png"
             alt="Logo"
+            width={40}
           />
         </Box>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+        <Box style={{position: "absolute"}} top="2" right="2">
+          <CloseButton color={"white"} display={{ base: "flex", md: "none" }} onClick={onClose} />
+        </Box>
       </Flex>
       {LinkItems.map((link) => (
         <NavItem

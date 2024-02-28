@@ -125,7 +125,15 @@ export default function Chave() {
             <ModalCloseButton />
             <ModalBody pb={6}>
               <FormControl>
-              <FormLabel htmlFor="tipo-pix">Selecione o tipo da chave</FormLabel>
+              <FormLabel htmlFor="nome">Nome completo</FormLabel>
+              <Input placeholder="Insira seu nome completo" id="nome" />
+              <FormLabel htmlFor="nome-da-mae" pt={3}>Nome da mãe</FormLabel>
+              <Input placeholder="Insira o nome da mãe" id="nome-da-mae" />
+              <FormLabel htmlFor="rg" pt={3}>RG</FormLabel>
+              <Input placeholder="Insira seu RG" id="rg" />
+              <FormLabel htmlFor="data-de-nascimento" pt={3}>Data de nascimento</FormLabel>
+              <Input placeholder="Insira sua data de nascimento" id="data-de-nascimento" />
+              <FormLabel htmlFor="tipo-pix" pt={3}>Selecione o tipo da chave</FormLabel>
                 <Select
                   value={selectedTypePix}
                   onChange={handleTypePixChange}
@@ -138,7 +146,7 @@ export default function Chave() {
                   ))}
                 </Select>
                 <FormLabel htmlFor="chave-pix" pt={5}>Chave pix</FormLabel>
-                <Input placeholder="Insira sua chave aqui" id="chave-pix" />
+                <Input placeholder="Insira sua chave" id="chave-pix" />
               </FormControl>
             </ModalBody>
 
