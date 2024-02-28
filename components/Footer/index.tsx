@@ -18,6 +18,7 @@ export const Footer = () => {
       position="sticky"
       // bottom="0"
       width="100%"
+      className="footer-copyright"
     >
       <Box textAlign="center">
         <Copyright />

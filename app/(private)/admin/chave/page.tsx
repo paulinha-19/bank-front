@@ -21,7 +21,7 @@ import {
   FormLabel,
   FormControl,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -30,6 +30,7 @@ import {
   CustomShadow,
   Table,
   CustomIconButton,
+  CustomInputMask
 } from "@/components/";
 import { utils } from "../../../../utils/index";
 import { TablePixData } from "@/interface/TablePixData";
@@ -42,6 +43,7 @@ export default function Chave() {
   const [searchResults, setSearchResults] = useState<TablePixData[]>([]);
   const [showNoResults, setShowNoResults] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
+  const [selectedTypePix, setSelectedTypePix] = useState<string>("");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { pageCount, currentPageData, currentPage, handlePageChange } =
@@ -85,6 +87,15 @@ export default function Chave() {
       return newStatus;
     });
   };
+  const handleTypePixChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTypePix((prevState) => {
+      const newTypePix = event.target.value;
+      if (prevState === newTypePix) {
+        return prevState;
+      }
+      return newTypePix;
+    });
+  };
   return (
     <Box>
       <Box mb="8">
@@ -108,24 +119,36 @@ export default function Chave() {
           </Button>
         </Flex>
         <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Criar chave de identificação</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Chave pix</FormLabel>
-              <Input type="text" placeholder="Insira sua chave aqui" />
-            </FormControl>
-          </ModalBody>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Criar chave de identificação</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <FormControl>
+              <FormLabel htmlFor="tipo-pix">Selecione o tipo da chave</FormLabel>
+                <Select
+                  value={selectedTypePix}
+                  onChange={handleTypePixChange}
+                  id="tipo-pix"
+                >
+                  {utils.typePix.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </Select>
+                <FormLabel htmlFor="chave-pix" pt={5}>Chave pix</FormLabel>
+                <Input placeholder="Insira sua chave aqui" id="chave-pix" />
+              </FormControl>
+            </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme='blue' onClick={onClose}>
-              Salvar
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            <ModalFooter>
+              <Button colorScheme="blue" onClick={onClose}>
+                Salvar
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
 
       <CustomShadow>
