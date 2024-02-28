@@ -101,14 +101,6 @@ export const Login = ({ changeView }: LoginProps) => {
             errors={errors}
           />
         </fieldset>
-        <Box mt="2" display="flex" justifyContent="space-between">
-          <Button variant="unstyled" onClick={() => changeView("PWReset")}>
-            <Text color={"white"}>Esqueci a senha</Text>
-          </Button>
-          <Button variant="unstyled" onClick={() => changeView("signUp")}>
-            <Text color={"white"}>Solicitar conta</Text>
-          </Button>
-        </Box>
         <Form.Actions>
           <Form.Action
             colorScheme="yellow"
