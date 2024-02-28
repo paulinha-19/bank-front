@@ -10,6 +10,17 @@ import {
   IconButton,
   Select,
   Heading,
+  useDisclosure,
+  ModalHeader,
+  Modal,
+  ModalOverlay,
+  ModalCloseButton,
+  FormControl,
+  FormLabel,
+  ModalBody,
+  ModalContent,
+  Button,
+  ModalFooter,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { CustomBadge, CustomShadow, Table, ButtonActions } from "@/components/";
@@ -48,6 +59,9 @@ export default function AprovarConta() {
   const [searchResults, setSearchResults] = useState<TableData[]>([]); //exampleData no []
   const [showNoResults, setShowNoResults] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<string>("todos");
+  const [selectedTypePix, setSelectedTypePix] = useState<string>("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
 
   useEffect(() => {
     const filteredData = exampleData.filter((item) => {
@@ -86,14 +100,65 @@ export default function AprovarConta() {
     });
   };
 
+  const handleTypePixChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTypePix((prevState) => {
+      const newTypePix = event.target.value;
+      if (prevState === newTypePix) {
+        return prevState;
+      }
+      return newTypePix;
+    });
+  };
+
   return (
     <Box>
       <Box mb="8">
-        <Flex justifyContent="space-between">
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
           <Heading as="h4" size="lg">
             Aprovar contas
           </Heading>
+          <Button
+            leftIcon={<utils.Icons.MdPix />}
+            colorScheme="blue"
+            variant="solid"
+            aria-label="Adicionar chave Pix"
+            size="sm"
+            onClick={onOpen}
+          >
+            Aprovar conta
+          </Button>
         </Flex>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Criar chave de identificação</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <FormControl>
+              <FormLabel htmlFor="nome">Nome completo</FormLabel>
+              <Input placeholder="Insira seu nome completo" id="nome" />
+              <FormLabel htmlFor="nome-da-mae" pt={3}>Nome da mãe</FormLabel>
+              <Input placeholder="Insira o nome da mãe" id="nome-da-mae" />
+              <FormLabel htmlFor="endereco" pt={3}>Endereço</FormLabel>
+              <Input placeholder="Insira seu endereço" id="endereco" />
+              <FormLabel htmlFor="data-de-nascimento" pt={3}>Data de nascimento</FormLabel>
+              <Input placeholder="Insira sua data de nascimento" id="data-de-nascimento" />
+                <FormLabel htmlFor="cpf" pt={5}>CPF</FormLabel>
+                <Input placeholder="Insira seu CPF" id="cpf" />
+              </FormControl>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" onClick={onClose}>
+                Salvar
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
       <CustomShadow>
         <Box p={5}>
