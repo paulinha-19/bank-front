@@ -20,3 +20,4 @@ export * from "./CustomCheckbox";
 export * from "./Login";
 export * from "./SignUp";
 export * from "./ResetPassword";
+export * from "./CustomInputMask";

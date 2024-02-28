@@ -67,6 +67,7 @@ export const Login = ({ changeView }: LoginProps) => {
             id="password"
             label="Senha"
             name="password"
+            type="password"
             placeholder="Insira sua senha"
             register={register}
             errors={errors}
